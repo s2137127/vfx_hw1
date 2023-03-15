@@ -53,7 +53,6 @@ def draw_radiance_map(img_list,n):
     # print(np.sort(out,axis=1)[0][-5:])
     # print(out)
     #out = (out/np.max(out))*255
-    # print(np.max(out),np.min(out))
     plt.imshow(out.astype(int), cmap="jet", origin="lower")
     plt.colorbar()
     plt.show()
