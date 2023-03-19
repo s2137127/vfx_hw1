@@ -8,7 +8,7 @@ img_name_list = ['img%02d.jpg' %i for i in range(1,14) ]
 P = 100 #p個點
 N = len(img_name_list) #N張影像
 n = 256
-Zij = np.zeros((P,N,3),np.uint8)
+Zij = np.zeros((P,N,3),np.uint8)#[point,pic,channel]
 A = np.zeros((N*P+254+1,n+P,3))
 b = np.zeros((A.shape[0],1,3))
 x = np.zeros((256+P,3))
@@ -39,7 +39,7 @@ def lnE(Zij,n):
     
     lnEi = sumup/sumdown
     
-    return np.exp(lnEi)
+    return lnEi
 
 def draw_radiance_map(img_list,n):
     img_tmp =np.array(img_list)
@@ -50,10 +50,8 @@ def draw_radiance_map(img_list,n):
             out[i,j] = lnE(img_tmp[:,i,j,n],n)
             if out[i,j] >1000:
                 print(i,j,out[i,j])
-    # print(np.sort(out,axis=1)[0][-5:])
-    # print(out)
-    #out = (out/np.max(out))*255
-    plt.imshow(out.astype(int), cmap="jet", origin="lower")
+    
+    plt.imshow(out.astype(int), cmap="jet", origin="upper")
     plt.colorbar()
     plt.show()
 if __name__ == '__main__':
@@ -91,5 +89,5 @@ if __name__ == '__main__':
     draw_radiance_map(img_list,0)
     # lnE = np.array([x[i,:] for i in range(256,x.shape[0])])
 
-    plt.plot(g[:,0]) 
-    plt.show()
+    # plt.plot(g[:,0]) 
+    # plt.show()
