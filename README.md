@@ -31,23 +31,35 @@ python vfx_hw1.py --help
 ### 3.1 Debevecs's Method
 
 * Response Curve
+
 ![](readme_pic/Deb_local_response.png)
+
 * Radiance
+
 ![](readme_pic/Deb_local_radiance.png)
+
 * Tonemapping
+
 | Photographic Global Operator | Photographic Local Operator |
 | :--------------------------: | :-------------------------: |
 | ![](readme_pic/Deb_local.png) | ![](readme_pic/Deb_global.png) |
+
 ### 3.2. Robertson's Method
 
 * Response Curve
+
 ![](readme_pic/Rob_local_response.png)
+
 * Radiance
+
 ![](readme_pic/Rob_local_radiance.png)
+
 * Tonemapping
+
 | Photographic Global Operator | Photographic Local Operator |
 | :--------------------------: | :-------------------------: |
 | ![](readme_pic/Rob_local.png) | ![](readme_pic/Rob_global.png) |
+
 ## 4. Our HDR Photo
 
 ### 4.1. Parameter
