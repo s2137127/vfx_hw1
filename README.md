@@ -7,16 +7,16 @@
 * Run
 
 ```
-python3 vfx_hw1.py 
+python vfx_hw1.py 
 ```
 * Please check the program document.
 ```
-python3 vfx_hw1.py --help
+python vfx_hw1.py --help
 ```
 
 ## 2. Code Works
 ### 2.1 Image Alignment
-* to do 
+* MTB algorithm
 
 ### 2.2 HDR Reconstruction
 * Debevec's Method
@@ -31,33 +31,45 @@ python3 vfx_hw1.py --help
 ### 3.1 Debevecs's Method
 
 * Response Curve
-
+![](readme_pic/Deb_local_response.jpg)
 * Radiance
-
+![](readme_pic/Deb_local_radiance.jpg)
 * Tonemapping
-
+| Photographic Global Operator | Photographic Local Operator |
+| :--------------------------: | :-------------------------: |
+![](readme_pic/Deb_local.jpg) | ![](readme_pic/Deb_global.jpg)
 ### 3.2. Robertson's Method
 
 * Response Curve
-
+![](readme_pic/Rob_local_response.jpg)
 * Radiance
-
+![](readme_pic/Rob_local_radiance.jpg)
 * Tonemapping
-
+| Photographic Global Operator | Photographic Local Operator |
+| :--------------------------: | :-------------------------: |
+![](readme_pic/Rob_local.jpg) | ![](readme_pic/Rob_global.jpg)
 ## 4. Our HDR Photo
 
 ### 4.1. Parameter
+* Camera
+  * RF35mm
+  * ISO800
 
 * Image Alignment
+  * depth = 4
 
 * Debevec's Method
-
+  * λ = 1
+  
 * Photographic Local Operator
+  * a = 0.25
+  * δ = 10^(-6)
 
 ### 4.2. Result
 
 * Response Curve
-
+![](readme_pic/Deb_global_response_m.jpg)
 * Radiance
-
+![](readme_pic/Deb_global_radiance_m.jpg)
 * Tonemapping 
+![](readme_pic/Deb_global_m.jpg)
