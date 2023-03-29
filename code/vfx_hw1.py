@@ -7,7 +7,7 @@ from HDR_alg import *
 from align import *
 import os
 parse = ArgumentParser('High Dynamic Range Imaging')
-parse.add_argument('--img_dir',default='../img1',type=str,help='directory for input images')
+parse.add_argument('--img_dir',default='../data/image',type=str,help='directory for input images')
 parse.add_argument('--tone_map',default='local',type=str,choices=['global','local'],help='tone mapping algorithm')
 parse.add_argument('--save_img',default=True,type=bool,help='save tone mapping image')
 parse.add_argument('--save_dir',default='../readme_pic',type=str,help='dir to save img')
@@ -28,11 +28,11 @@ Zij = np.zeros((P,N,3),np.int16)#[point,pic,channel]
 # B = np.array([np.log(1/3),np.log(1/8),np.log(1/25),np.log(1/40),np.log(1/100),np.log(1/250),np.log(1/400)],dtype=np.float64)
 # B = np.array([np.log(2),np.log(1),np.log(0.5),np.log(0.25),np.log(1/8),np.log(1/15),np.log(1/30),np.log(1/60),np.log(1/125)
 #               ,np.log(1/250),np.log(1/500),np.log(1/1000),np.log(1/2000)],dtype=np.float64)
-B = np.array([np.log(13),np.log(10),np.log(4),np.log(3.2),np.log(1),np.log(0.8),np.log(0.3),np.log(0.25),np.log(1/60)
-              ,np.log(1/80),np.log(1/320),np.log(1/400),np.log(1/1000)],dtype=np.float64)#log delta t
+# B = np.array([np.log(13),np.log(10),np.log(4),np.log(3.2),np.log(1),np.log(0.8),np.log(0.3),np.log(0.25),np.log(1/60)
+#               ,np.log(1/80),np.log(1/320),np.log(1/400),np.log(1/1000)],dtype=np.float64)#log delta t
 # B = np.array([np.log(1/0.03125),np.log(1/0.0625),np.log(1/0.125),np.log(1/0.25),np.log(1/0.5),np.log(1),np.log(1/2),np.log(1/4),np.log(1/8)
             #   ,np.log(1/16),np.log(1/32),np.log(1/64),np.log(1/128),np.log(1/256),np.log(1/512),np.log(1/1024)],dtype=np.float64)
-# B = np.array([np.log(8),np.log(4),np.log(2),np.log(1),np.log(0.5),np.log(0.25),np.log(0.125),np.log(0.067),np.log(0.033)],dtype=np.float64)
+B = np.array([np.log(8),np.log(4),np.log(2),np.log(1),np.log(0.5),np.log(0.25),np.log(0.125),np.log(0.067),np.log(0.033)],dtype=np.float64)
 
 Weight = np.float32( [z-zmin+1 if z<(zmin+zmax)/2 else zmax-z+1 for z in range(256) ])
 
@@ -157,14 +157,14 @@ if __name__ == '__main__':
         plt.imshow(np.log(hdr[...,2]).astype(int), cmap="jet", origin="upper")
         # plt.colorbar()
         print("save")
-        plt.savefig('../readme_pic/%s_%s_radiance.jpg' % (args['HDR_alg'][:3],args['tone_map']))
+        plt.savefig('../readme_pic/%s_%s_radiance_m.png' % (args['HDR_alg'][:3],args['tone_map']))
         
     if args['tone_map'] == 'global':
         out = tone_mapping_global(hdr,a=0.25,L_white=255)
     elif args['tone_map'] == 'local':
         out = tone_mapping_local(hdr)
     if args['save_img']:
-        cv2.imwrite(os.path.join(args['save_dir'],args['HDR_alg'][:3]+'_'+args['tone_map']+'.jpg'),out)
+        cv2.imwrite(os.path.join(args['save_dir'],args['HDR_alg'][:3]+'_'+args['tone_map']+'_m.png'),out)
     # lnE = np.array([x[i,:] for i in range(256,x.shape[0])])
     if args['plot_response']:
         fig = plt.figure()
@@ -174,4 +174,4 @@ if __name__ == '__main__':
         plt.plot(g[:,1],color='green') 
         plt.subplot(133)
         plt.plot(g[:,2],color='red') 
-        plt.savefig('../readme_pic/%s_%s_response.jpg' % (args['HDR_alg'][:3],args['tone_map']))
+        plt.savefig('../readme_pic/%s_%s_response_m.png' % (args['HDR_alg'][:3],args['tone_map']))
