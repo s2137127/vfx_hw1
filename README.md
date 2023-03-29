@@ -37,7 +37,7 @@ python vfx_hw1.py --help
 * Tonemapping
 | Photographic Global Operator | Photographic Local Operator |
 | :--------------------------: | :-------------------------: |
-![](readme_pic/Deb_local.jpg) | ![](readme_pic/Deb_global.jpg)
+| ![](readme_pic/Deb_local.jpg) | ![](readme_pic/Deb_global.jpg) |
 ### 3.2. Robertson's Method
 
 * Response Curve
@@ -47,7 +47,7 @@ python vfx_hw1.py --help
 * Tonemapping
 | Photographic Global Operator | Photographic Local Operator |
 | :--------------------------: | :-------------------------: |
-![](readme_pic/Rob_local.jpg) | ![](readme_pic/Rob_global.jpg)
+| ![](readme_pic/Rob_local.jpg) | ![](readme_pic/Rob_global.jpg) |
 ## 4. Our HDR Photo
 
 ### 4.1. Parameter
@@ -68,8 +68,13 @@ python vfx_hw1.py --help
 ### 4.2. Result
 
 * Response Curve
+
 ![](readme_pic/Deb_global_response_m.jpg)
+
 * Radiance
+
 ![](readme_pic/Deb_global_radiance_m.jpg)
+
 * Tonemapping 
+
 ![](readme_pic/Deb_global_m.jpg)
